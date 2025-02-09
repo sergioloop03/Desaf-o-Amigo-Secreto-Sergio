@@ -1,62 +1,53 @@
-let nombres = [`sergio`, `abrham`, `pedro`, `juan`];
-
-
+let arregloNombres = [];
+var listaAmigos = document.getElementById("listaAmigos");
+var resultado = document.getElementById("resultado");
+var nombreSorteado = "";
 
 function agregarAmigo(){
-    let nombreIngresado = document.getElementById(`amigo`).value;
-    if (nombreIngresado == ``){
-        alert(`Por Favor Ingrese Un Nombre`);
+    let nombreIngresado = document.getElementById("amigo").value;
+    if (nombreIngresado == ""){
     } if (nombreIngresado >= 0){
-        alert(`Por Favor Ingrese Un Nombre`);
+        alert("Por Favor Ingrese Un Nombre");
         limpiarCajaTexto();
     } else {
-        nombres.push(nombreIngresado);
-
+        arregloNombres.push(nombreIngresado);
+        agregarNombreEscrito();
+        console.log(arregloNombres);
         limpiarCajaTexto();
-        console.log(nombres)
     };
+}
+
+function sortearAmigo(){
+    if(arregloNombres.length == 0) {
+        alert("La Lista De Amigos está Vacia, Escribe Los Nombres Para Sortearlos");
+    }else{
+        let indiceAleatorio = Math.floor(Math.random() * arregloNombres.length);
+        nombreSorteado = arregloNombres[indiceAleatorio];
+        resultado.innerHTML = `El Amigo Sorteado es: ${nombreSorteado}`;
+        listaAmigos.innerHTML = "";
+    }
+}
+
+function recorrerArreglo(){
+    for(let posicionEnLista =0; posicionEnLista < arregloNombres.length; posicionEnLista++){
+    var listaPantalla = document.createElement("li");
+    listaPantalla.innerHTML = arregloNombres[posicionEnLista];
+    listaAmigos.appendChild(listaPantalla);
+    }
+}
+
+function agregarNombreEscrito(){
+        var listaPantalla = document.createElement("li");
+        listaPantalla.innerHTML = arregloNombres[arregloNombres.length-1];
+        listaAmigos.appendChild(listaPantalla);
 }
 
 function limpiarCajaTexto (){
-    let textoEnCaja = document.querySelector(`#amigo`).value = ``;
-};
-function limpiarArregloNombres(){
-    let nombres = []
+    let textoEnCaja = document.querySelector("#amigo").value = "";
 }
 
 
-
-
-
-
-//funcion que nos ayuda a agregar un nombre a la lista que se muestra en pantalla
-function agregarNombreListaPantalla(posicion){
-var listaEnPantalla = document.getElementById(`listaAmigos`);
-var nuevoNombre = document.createElement(`li`);
-nuevoNombre.appendChild(document.createTextNode(`${nombres[posicion]}`));
-listaEnPantalla.appendChild(nuevoNombre)
-};
-
-var listaAmigos = document.getElementById(`listaAmigos`)
-
-function agregarAmigoEscrito(){
-    for(let posicionEnLista =0; posicionEnLista <= nombres.length; posicionEnLista++){
-    var li = document.createElement(`li`)
-    li.innerHTML = nombres[posicionEnLista]
-    console.log(posicionEnLista)
-    listaAmigos.appendChild(li)
-
-    };
-};
-
-    agregarAmigoEscrito();
-    agregarNombreListaPantalla(3);
-  
     
-
-    console.log(nombres);
-    console.log(nombres.length);
-
 
 
 
