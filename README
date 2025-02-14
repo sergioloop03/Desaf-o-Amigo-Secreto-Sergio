@@ -1,0 +1,53 @@
+## Dependencias
+
+*   *Ninguna.* Este proyecto no tiene dependencias externas. Todo el código está escrito en JavaScript plano (vanilla).
+* Solo se necesita un navegador web como Chrome o Firefox.
+
+## Cómo Ejecutar el Proyecto
+
+1.  *Abre el archivo index.html en tu navegador web:* Simplemente navega hasta la ubicación donde guardaste los archivos y abre index.html con tu navegador.
+2.  *Utiliza un servidor local (Recomendado):* Si planeas hacer más desarrollos o pruebas, es recomendable usar un servidor local. Puedes hacerlo con:
+    *   *Live Server (VS Code):* Si usas VS Code, la extensión "Live Server" es muy útil. Haz clic derecho en index.html y selecciona "Open with Live Server".
+    *   *Python:* Si tienes Python instalado, puedes ejecutar python3 -m http.server en la carpeta del proyecto. Luego, abre http://localhost:8000 en tu navegador.
+    * *Node.js:* Con Node puedes usar un servidor similar con http-server -c-1
+
+## Estructura del Proyecto
+
+*   *app.js:* Contiene la lógica principal de la aplicación (funciones para agregar nombres, sortear, etc.).
+*   *index.html:* Define la estructura HTML de la página y se encarga de llamar al archivo JS.
+
+## Funcionalidades Implementadas
+
+*   *agregarAmigo():* Añade un nombre al array arregloNombres y actualiza la lista en la pantalla.
+*   *sortearAmigo():* Realiza el sorteo seleccionando un nombre al azar y muestra el resultado.
+*   *recorrerArreglo():* Recorre la lista y la muestra en la pantalla.
+*   *agregarNombreEscrito():* Añade el nombre escrito en la caja de texto a la lista en pantalla.
+*   *limpiarCajaTexto():* Limpia el campo de texto luego de ingresar un nombre.
+
+## Posibles Problemas y Soluciones
+
+*   *Error: sortearAmigo() muestra undefined*:
+    *   *Problema:* Antes el código tenia un error al calcular el indice aleatorio. El indice se calcula una sola vez y al principio. Si no hay nombres en ese momento, quedará mal calculado.
+    *   *Solución:* Se movió el calculo de indice aleatorio dentro de la función sortearAmigo(). De esta manera, se calcula cada vez que se hace un sorteo.
+*   *Problema: if(arregloNombres.length = 0) Siempre entra al else.*
+    * *Problema:* Al usar = en lugar de == se está haciendo una asignación y no una comparación.
+    * *Solución:* Se modificó el código para usar if(arregloNombres.length == 0)
+*   *Problema: No se limpiaba el arreglo.*
+    * *Problema:* la función limpiarArregloNombres estaba creando un nuevo arreglo local en lugar de vaciar el original.
+    * *Solución:* Se eliminó la función limpiarArregloNombres dado que no era necesaria.
+*   *Problema: No se validaba si el input era vacío*
+    * *Problema:* No se estaba validando si el input estaba vacio. De estarlo, se agregaba un espacio vacio al arreglo.
+    * *Solución:* Se modifico la función agregarAmigo para comprobar si el nombreIngresado era vacio con if (nombreIngresado.length == 0)
+
+## Mejoras Futuras
+
+*   *Persistencia de datos:* Actualmente, los nombres se pierden al recargar la página. Se podría implementar el uso de localStorage o una base de datos para guardar los nombres de manera persistente.
+*   *Interfaz de usuario más amigable:* Se podría mejorar la apariencia y la experiencia de usuario con CSS y quizá algún framework de UI.
+*   *Validaciones más robustas:* Se podrían agregar validaciones para evitar nombres duplicados, caracteres especiales, etc.
+*   *Animaciones:* Agregar animaciones durante el sorteo.
+* *Limpiar el arreglo:* Agregar una función para limpiar el arreglo.
+* *Agregar un mensaje de cargando*: Poner un mensaje que diga "cargando" antes de mostrar el resultado.
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme
